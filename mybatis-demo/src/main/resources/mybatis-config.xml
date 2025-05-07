@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<!-- typeAliases 给POJO类起别名的方式，可以简化开发方式-->
+<!--    xml 文件的配置需要遵循配置顺序，例如 environments 必须在mappers前面-->
+
+
+<!--    环境用于配置多个数据源，可以用于连接不同的数据库，不如test数据库-->
+    <environments default="development">
+<!--        定义一个development 的数据库-->
+        <environment id="development">
+<!--            这是事务不用管理，会在Spring框架中被自动管理-->
+            <transactionManager type="JDBC"/>
+<!--            数据库连接池 mybatis 中的默认数据库连接池，叫做POOLED, 也会被Spring集成-->
+            <dataSource type="POOLED">
+
+<!--                数据库的连接信息-->
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/mybatisdemo?useSSL=false&amp;allowPublicKeyRetrieval=true"/>
+                <property name="username" value="root"/>
+                <property name="password" value="gtsi"/>
+            </dataSource>
+        </environment>
+
+<!--&lt;!&ndash;    定义一个测试的数据库&ndash;&gt;-->
+<!--        <environment id="development">-->
+<!--            <transactionManager type="JDBC"/>-->
+<!--            <dataSource type="POOLED">-->
+
+<!--                &lt;!&ndash;                数据库的连接信息&ndash;&gt;-->
+<!--                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>-->
+<!--                <property name="url" value="jdbc:mysql://localhost:3306/mybatisdemo?useSSL=false"/>-->
+<!--                <property name="username" value="root"/>-->
+<!--                <property name="password" value="gtsi2024."/>-->
+<!--            </dataSource>-->
+<!--        </environment>-->
+    </environments>
+
+<!--    用来指定SQL 映射文件的路径的，如果没有的话注释掉-->
+    <mappers>
+<!--        加载SQL的映射文件-->
+<!--        <mapper resource="org/mybatis/example/BlogMapper.xml"/>-->
+<!--        mybatis-config.xml 文件和 UserMapper.xml 文件评级-->
+<!--        <mapper resource="com/yushenglll/quickstart/mybatisdemo/mapper/UserMapper.xml"/>-->
+
+
+<!--    Mapper 代理方式, 不管有多少个mapper类，一个代码全部搞定，通过扫描mapper文件夹下有多少mapper-->
+        <package name="com.yushenglll.quickstart.mybatisdemo.mapper"/>
+    </mappers>
+</configuration>

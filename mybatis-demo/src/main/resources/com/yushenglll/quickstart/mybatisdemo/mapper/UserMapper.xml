@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+    namespace: 命名空间
+    mapper 标签下面就可以写各种标签了
+        SELECT
+        UPDATE
+
+-->
+<mapper namespace="com.yushenglll.quickstart.mybatisdemo.mapper.UserMapper">
+
+<!--    resultType 返回结果的对象类型-->
+<!--    id 是这个当下标签的唯一标识。就是这个select标签的唯一标识, 如果查询所有的话就是 selectAll-->
+    <select id="selectAll" resultType="com.yushenglll.quickstart.mybatisdemo.pojo.User">
+        select * from tb_user
+    </select>
+</mapper>
